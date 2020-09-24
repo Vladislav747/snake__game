@@ -28,9 +28,9 @@ async function run() {
 
     do {
         await renderField([...gameState.snake], gameState.currentMeal, fieldSize);
-        const command = getNextCommand([...gameState.snake], gameState.currentMeal);
-        console.log(command, "comand");
-        gameState = iterGame.next(command).value;
+        const currentCommand = getNextCommand([...gameState.snake], gameState.currentMeal);
+        console.log(currentCommand, "comand");
+        gameState = iterGame.next(currentCommand).value;
     } while (!gameState.gameOver);   
 
     console.log(`Your Score is ${gameState.maxScore}`);

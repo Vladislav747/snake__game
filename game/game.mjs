@@ -8,7 +8,6 @@ export function startGame(snake, meals, fieldSize, maxTicks) {
 
 }
 
-
 //Движение объекта
 const directionsShift = {
     up: { name: 'up', x: 0, y: -1 },
@@ -53,7 +52,12 @@ export function getNextCommand(snake, meal) {
                 return commands.FORWARD;
             }
 
-           
+            if(mealY < headY && headX == mealX && xShift == 1 ) {
+                return commands.TURN_LEFT;
+            }
+            if(mealY < headY && headX == mealX && xShift == -1 ) {
+                return commands.TURN_RIGHT;
+            }
 
             if(mealY == headY && headX > mealX && xShift == 1) {
                 raznica = headX - mealX - 1;
@@ -69,6 +73,12 @@ export function getNextCommand(snake, meal) {
             if(mealY > headY && headX > mealX && yShift == 1) return commands.TURN_RIGHT;
             if(mealY > headY && headX < mealX && yShift == 1 ) return commands.TURN_LEFT;
             if(mealY > headY && headX < mealX && xShift == 1) return commands.TURN_RIGHT;
+
+            //Диагональные движения
+            if(mealY < headY && headX > mealX && xShift == -1) return commands.TURN_RIGHT;
+            if(mealY > headY && headX > mealX && xShift == -1) return commands.TURN_LEFT;
+
+            if(mealY < headY && headX > mealX && yShift == -1) return commands.TURN_LEFT;
     
         }else{
             raznica--;
