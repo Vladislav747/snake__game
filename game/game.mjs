@@ -69,7 +69,6 @@ export function getNextCommand(snake, meal) {
             if(mealY > headY && headX > mealX && yShift == 1) return commands.TURN_RIGHT;
             if(mealY > headY && headX < mealX && yShift == 1 ) return commands.TURN_LEFT;
             if(mealY > headY && headX < mealX && xShift == 1) return commands.TURN_RIGHT;
-            if(mealY < headY && headX < mealX) return commands.TURN_RIGHT;
     
         }else{
             raznica--;
