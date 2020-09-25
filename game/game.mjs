@@ -35,15 +35,18 @@ export function getNextCommand(snake, meal) {
         const yShift = headY - neckY
 
         if (raznica == 0) {
-            //Еда находится параллельно
+            //Еда находится параллельно оси X
             if (mealY > headY && headX == mealX && xShift == -1)
                 return commands.TURN_LEFT
             if (mealY > headY && headX == mealX && xShift == 1)
                 return commands.TURN_RIGHT
+            //Еда находится параллельно оси Y
             if (mealY == headY && headX < mealX && yShift == 1)
                 return commands.TURN_LEFT
             if (mealY == headY && headX > mealX && yShift == 1)
                 return commands.TURN_RIGHT
+            if (mealY == headY && headX > mealX && yShift == -1)
+                return commands.TURN_LEFT
 
             //Еда находится позади
             if (mealY > headY && headX == mealX && yShift == -1)

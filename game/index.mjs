@@ -8,7 +8,7 @@ import { renderField } from './visualizer.mjs'
 // const fieldSize = 10;
 // const maxTicks = 100;
 const snake = ['5;4', '5;5', '5;6', '5;7']
-const meals = ['2;6']
+const meals = ['0;4']
 const fieldSize = 10
 const maxTicks = 10
 
@@ -18,7 +18,7 @@ async function run() {
 
     */
     //runGame - функция генератор
-    console.log('Проходим тест Еда сзади и сбоку от змеи:')
+    console.log('Проходим тест Еда возле стенки')
     const iterGame = runGame(snake, meals, fieldSize, maxTicks)
     //runGame - функция генератор позволяет с помощью функцию next каждое значение при изменении
     let gameState = iterGame.next().value
