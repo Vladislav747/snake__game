@@ -20,7 +20,7 @@ const directionsShift = {
 export function getNextCommand(snake, meal) {
     // console.log({snake, meal}, "getNextCommand");
     //Куда будем двигаться?
-    console.log(fieldSizeBoundaries, 'fieldSizeBoundaries')
+
     if (meal) {
         //Первый элмент массива это x а второй y
         const [mealX, mealY] = meal.split(';')
@@ -34,6 +34,46 @@ export function getNextCommand(snake, meal) {
         //Сдвиг головы относительно шеи по Оси Y
         const yShift = headY - neckY
 
+        /*Если впереди стена то сначала ее обойдем */
+        if (fieldSizeBoundaries - 1 == headX && headY == 0 && xShift == 1) {
+            return commands.TURN_RIGHT
+        }
+
+        if (
+            fieldSizeBoundaries - 1 == headY &&
+            headX == fieldSizeBoundaries - 1 &&
+            yShift == 1
+        ) {
+            return commands.TURN_RIGHT
+        }
+
+        if (
+            fieldSizeBoundaries - 1 == headY &&
+            headX == fieldSizeBoundaries - 1 &&
+            yShift == 1
+        ) {
+            return commands.TURN_LEFT
+        }
+
+        if (
+            fieldSizeBoundaries - 1 == headY &&
+            headX == fieldSizeBoundaries - 1 &&
+            xShift == 1
+        ) {
+            return commands.TURN_LEFT
+        }
+
+        if (fieldSizeBoundaries - 1 == headY && headX == 0 && yShift == 1) {
+            return commands.TURN_LEFT
+        }
+
+        if (headY == 0 && headX == 0 && xShift == -1) {
+            return commands.TURN_LEFT
+        }
+
+        //Змейка не врезайся в себя...
+
+        //Змейка ищет еду
         if (raznica == 0) {
             //Еда находится параллельно оси X
             if (mealY > headY && headX == mealX && xShift == -1)

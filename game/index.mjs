@@ -3,14 +3,17 @@ import { startGame, getNextCommand } from './game.mjs'
 import { renderField } from './visualizer.mjs'
 
 //Отсчет ведем с нуля
-// const snake = [ '4;0', '3;0', '2;0', '1;0', '0;0' ];
-// const meals = [ '3;5', '8;6'];
-// const fieldSize = 10;
+//19 уровень
 // const maxTicks = 100;
-const snake = ['5;4', '5;5', '5;6', '5;7']
-const meals = ['0;4']
-const fieldSize = 10
-const maxTicks = 10
+// const snake = ['0;0', '1;0', '2;0', '3;0']
+// const meals = ['1;1', '1;2', '2;1', '3;0']
+// const fieldSize = 4
+// const maxTicks = 50
+
+const snake = ['0;0', '1;0', '2;0', '3;0']
+const meals = ['1;1', '1;2', '2;1', '3;0']
+const fieldSize = 4
+const maxTicks = 50
 
 async function run() {
     /*Объект игры
@@ -18,7 +21,7 @@ async function run() {
 
     */
     //runGame - функция генератор
-    console.log('Проходим тест Еда возле стенки')
+    console.log('Проходим тест Маленькое поле')
     const iterGame = runGame(snake, meals, fieldSize, maxTicks)
     //runGame - функция генератор позволяет с помощью функцию next каждое значение при изменении
     let gameState = iterGame.next().value
