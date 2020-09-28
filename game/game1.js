@@ -40,8 +40,6 @@ var snakeController = {
         }
     },
     getPath: function () {
-        if()
-
         var head = this.snakeBody[0]
         this.movesVariants = [this.grid[head.x][head.y]]
         this.finalMoves = []
@@ -171,24 +169,20 @@ export function startGame(snake, meals, fieldSize, maxTicks) {
 }
 
 export function getNextCommand(snake, meal) {
+    let startPosition = {
+        x: 0,
+        y: 0,
+    }
     if (meal) {
-        // console.log(meal)
-        snakeController.initGrid()
-
-        snakeController.mealPosition = {
-            x: meal.split(';')[0],
-            y: meal.split(';')[1],
-        }
-
-        snakeController.snakeBody = snake.map(function (el) {
+        let snakeBody = snake.map(function (el) {
             return {
                 x: el.split(';')[0],
                 y: el.split(';')[1],
             }
         })
 
-        var path = snakeController.getPath()
-        var ourPath = snakeController.findPath(path)
+        
+        
         return commands[snakeController.getDirection(ourPath)]
     }
 }
